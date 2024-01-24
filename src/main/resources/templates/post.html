@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home page</title>
+    <title>MVC with Thymeleaf</title>
     <link th:href="@{/css/bootstrap/bootstrap.css}" rel="stylesheet">
     <script th:src="@{/js/bootstrap/bootstrap.js}"></script>
 </head>
+
 <body>
 <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
     <div class="container-fluid">
@@ -27,8 +29,20 @@
         </div>
     </div>
 </nav>
-<main class="container">
-    <h1>Home page</h1>
+<main class="container m-4">
+    <div class="row justify-content-center">
+        <div class="col-3">
+            <div class="card">
+                <img th:src="${post.imgSrc}" alt="..." class="card-img-top">
+                <div class="card-body">
+                    <h5 th:text="${post.title}" class="card-title">...</h5>
+                    <p th:text="${post.content}" class="card-text">...</p>
+                    <a th:href="${post.url}" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 </body>
+
 </html>

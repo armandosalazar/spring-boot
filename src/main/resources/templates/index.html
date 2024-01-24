@@ -29,15 +29,15 @@
         </div>
     </div>
 </nav>
-<main class="container justify-content-center">
-    <div class="row m-4">
+<main class="container mt-4">
+    <div class="row justify-content-center">
         <div th:each="post: ${posts}" class="col-3">
             <div class="card">
                 <img th:src="${post.imgSrc}" alt="..." class="card-img-top">
                 <div class="card-body">
                     <h5 th:text="${post.title}" class="card-title">...</h5>
                     <p th:text="${post.content}" class="card-text">...</p>
-                    <a th:href="${post.url}" class="btn btn-primary">Read More</a>
+                    <a th:href="${'/post?id='} + ${post.id}" class="btn btn-primary">Read More</a>
                 </div>
             </div>
         </div>

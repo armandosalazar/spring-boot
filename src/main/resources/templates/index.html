@@ -30,57 +30,18 @@
     </div>
 </nav>
 <main class="container justify-content-center">
-    <section class="row m-3">
-        <div class="col-3">
-            <div class="card" style="width: 18rem;">
-                <img th:src="@{/img/post.png}" class="card-img-top" alt="...">
+    <div class="row m-4">
+        <div th:each="post: ${posts}" class="col-3">
+            <div class="card">
+                <img th:src="${post.imgSrc}" alt="..." class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's
-                        content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 th:text="${post.title}" class="card-title">...</h5>
+                    <p th:text="${post.content}" class="card-text">...</p>
+                    <a th:href="${post.url}" class="btn btn-primary">Read More</a>
                 </div>
             </div>
         </div>
-        <div class="col-3">
-            <div class="card" style="width: 18rem;">
-                <img th:src="@{/img/post.png}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's
-                        content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="card" style="width: 18rem;">
-                <img th:src="@{/img/post.png}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's
-                        content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="card" style="width: 18rem;">
-                <img th:src="@{/img/post.png}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's
-                        content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <p th:text="${message}">...</p>
+    </div>
 </main>
 </body>
 

@@ -4,6 +4,7 @@ import org.armandosalazar.model.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,6 +32,13 @@ public class BasicController {
 
     @GetMapping(path = {"/post"})
     public ModelAndView post(@RequestParam(defaultValue = "1", name = "id", required = false) int id) {
+        ModelAndView modelAndView = new ModelAndView("post");
+        this.getPosts().stream().filter(post -> post.getId() == id).forEach(post -> modelAndView.addObject("post", post));
+        return modelAndView;
+    }
+
+    @GetMapping(path = {"/post/{id}"})
+    public ModelAndView postByPathVariable(@PathVariable(name = "id") int id) {
         ModelAndView modelAndView = new ModelAndView("post");
         this.getPosts().stream().filter(post -> post.getId() == id).forEach(post -> modelAndView.addObject("post", post));
         return modelAndView;

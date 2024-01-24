@@ -29,17 +29,13 @@
         </div>
     </div>
 </nav>
-<main class="container m-4">
-    <div class="row justify-content-center">
-        <div class="col-3">
-            <div class="card">
-                <img th:src="${post.imgSrc}" alt="..." class="card-img-top">
-                <div class="card-body">
-                    <h5 th:text="${post.title}" class="card-title">...</h5>
-                    <p th:text="${post.content}" class="card-text">...</p>
-                    <a th:href="${post.url}" class="btn btn-primary">Read More</a>
-                </div>
-            </div>
+<main class="container">
+    <div class="d-flex justify-content-center my-4">
+        <div class="text-center p-5 rounded" style="background-color: #e3f2fd">
+            <h1 th:text="${post.title}" class="mb-4">...</h1>
+            <img th:src="${post.imgSrc}" class="rounded mx-auto d-block my-5" alt="..." width="400px">
+            <h4 th:text="${post.content}" class="mb-4">...</h4>
+            <a th:href="@{/}" data-mdb-ripple-init class="btn btn-primary" role="button">Go to Back</a>
         </div>
     </div>
 </main>

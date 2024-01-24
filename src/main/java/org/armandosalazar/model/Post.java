@@ -1,6 +1,7 @@
 package org.armandosalazar.model;
 
 public class Post {
+    private int id;
     private String title;
     private String content;
     private String imgSrc;
@@ -9,11 +10,20 @@ public class Post {
     public Post() {
     }
 
-    public Post(String title, String content, String imgSrc, String url) {
+    public Post(int id, String title, String content, String imgSrc, String url) {
+        this.id = id;
         this.title = title;
         this.content = content;
         this.imgSrc = imgSrc;
         this.url = url;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {

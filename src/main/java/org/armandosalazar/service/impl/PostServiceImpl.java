@@ -5,6 +5,7 @@ import org.armandosalazar.service.PostService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Logger;
 
 @Service
@@ -19,5 +20,11 @@ public class PostServiceImpl implements PostService {
             post.setTitle(post.getTitle().toUpperCase());
         }
         return posts;
+    }
+
+    @Override
+    public void addClass(Class<?> clazz) {
+        Logger.getLogger(PostServiceDecoradorImpl.class.getName())
+                .info(String.format(Locale.ROOT, "🚀::addClass(%s)", clazz.getName()));
     }
 }

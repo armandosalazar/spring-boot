@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Logger;
 
 @Service
@@ -31,5 +32,11 @@ public class PostServiceDecoradorImpl implements PostService {
             post.setTitle(post.getTitle().concat(" - Decorator"));
         }
         return posts;
+    }
+
+    @Override
+    public void addClass(Class<?> clazz) {
+        Logger.getLogger(PostServiceDecoradorImpl.class.getName())
+                .info(String.format(Locale.ROOT, "🚀::addClass(%s)", clazz.getName()));
     }
 }

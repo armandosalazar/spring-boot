@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface PostService {
     List<Post> validatePosts(List<Post> posts);
+
+    void addClass(Class<?> clazz);
 }

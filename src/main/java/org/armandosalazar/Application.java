@@ -13,15 +13,28 @@ import java.util.logging.Logger;
 
 @SpringBootApplication()
 public class Application implements CommandLineRunner {
+	/**
+	 * Dependency injection by field
+	 */
 	@Autowired
 	@Qualifier("beanConnection")
 	private Connection connection;
-	@Autowired
-	@Qualifier("postComponent")
 	private PostComponent postComponent;
-	@Autowired
-	@Qualifier("postServiceDecoradorImpl")
 	public PostService postService;
+
+	public Application() {
+	}
+
+	/**
+	 * Dependency injection by constructor
+	 * Use when you need to inject a dependency that is required
+	 * Use @Autowired when you have more than one constructor
+	 */
+	@Autowired
+	public Application(@Qualifier("postComponent") PostComponent postComponent) {
+		this.postComponent = postComponent;
+	}
+
 	private final Logger LOG = Logger.getLogger(Application.class.getName());
 
 	public static void main(String[] args) {
@@ -34,5 +47,15 @@ public class Application implements CommandLineRunner {
 		LOG.info(connection.toString());
 		postService.validatePosts(postComponent.getPosts())
 				.forEach(post -> LOG.info(post.toString()));
+	}
+
+	/**
+	 * Dependency injection by setter
+	 * Use when you need modify the dependency before inject it
+	 */
+	@Autowired
+	public void setPostService(@Qualifier("postServiceDecoradorImpl") PostService postService) {
+		postService.addClass(Application.class);
+		this.postService = postService;
 	}
 }

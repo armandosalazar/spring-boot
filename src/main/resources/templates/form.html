@@ -15,7 +15,7 @@
         <form th:action="@{/form}" th:object="${post}" method="post">
             <div class="mb-3">
                 <label for="id" class="form-label">Id</label>
-                <input th:field="*{id}" type="number" id="id" class="form-control" placeholder="0">
+                <input th:field="*{id}" th:value="${post.id}" type="number" id="id" class="form-control"  min="1" max="100">
                 <div class="form-text"></div>
             </div>
             <div class="mb-3">

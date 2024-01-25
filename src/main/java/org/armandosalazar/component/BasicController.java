@@ -56,6 +56,7 @@ public class BasicController {
     @GetMapping(path = {"/form"})
     public ModelAndView form() {
         Post post = new Post();
+        post.setId(1);
         post.setImage("/img/post.png");
         return new ModelAndView("form", "post", post);
     }

@@ -11,16 +11,14 @@
 
 <body>
 <nav th:replace="~{fragments/fragment :: nav}"></nav>
-<main class="container my-2">
-    <div class="row justify-content-center">
-        <div th:each="post: ${posts}" class="col-3">
-            <div class="card my-2">
-                <img th:src="${post.image}" alt="..." class="card-img-top">
-                <div class="card-body">
-                    <h5 th:text="${post.title}" class="card-title">...</h5>
-                    <p th:text="${post.description}" class="card-text">...</p>
-                    <a th:href="${'/post?id='} + ${post.id}" class="btn btn-primary">Read More</a>
-                </div>
+<main class="container my-3">
+    <div class="row justify-content-center gap-3">
+        <div th:each="post: ${posts}" class="card p-0" style="width: 18rem;">
+            <img th:src="${post.image}" alt="..." class="card-img-top">
+            <div class="card-body">
+                <h5 th:text="${post.title}" class="card-title">...</h5>
+                <p th:text="${post.description}" class="card-text">...</p>
+                <a th:href="${'/post?id='} + ${post.id}" class="btn btn-primary">Read More</a>
             </div>
         </div>
     </div>

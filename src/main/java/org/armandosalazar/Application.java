@@ -1,6 +1,8 @@
 package org.armandosalazar;
 
+import org.armandosalazar.component.PostComponent;
 import org.armandosalazar.model.Connection;
+import org.armandosalazar.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
@@ -11,12 +13,16 @@ import java.util.logging.Logger;
 
 @SpringBootApplication()
 public class Application implements CommandLineRunner {
-	private final Logger LOG = Logger.getLogger(Application.class.getName());
 	@Autowired
 	@Qualifier("beanConnection")
 	private Connection connection;
 	@Autowired
-	private String hello;
+	@Qualifier("postComponent")
+	private PostComponent postComponent;
+	@Autowired
+	@Qualifier("postServiceImpl")
+	public PostService postService;
+	private final Logger LOG = Logger.getLogger(Application.class.getName());
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -26,6 +32,7 @@ public class Application implements CommandLineRunner {
 	public void run(String... args) {
 		LOG.info("🚀::run()");
 		LOG.info(connection.toString());
-		LOG.info(hello);
+		postService.validatePosts(postComponent.getPosts())
+				.forEach(post -> LOG.info(post.toString()));
 	}
 }

@@ -22,8 +22,4 @@ public class BuildConnection {
         return connection;
     }
 
-    @Bean
-    public String getHello() {
-        return "Hello World";
-    }
 }

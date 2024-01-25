@@ -10,31 +10,13 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
-    <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/}">Spring Boot</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a
-                        class="nav-link active"
-                        aria-current="page"
-                        th:href="@{/}">Home</a>
-                <a class="nav-link" th:href="@{/gallery}">Gallery</a>
-                <a class="nav-link" th:href="@{/posts}">Post</a>
-            </div>
-        </div>
-    </div>
-</nav>
+<nav th:replace="~{fragments/nav :: nav}"></nav>
 <main class="container">
     <div class="d-flex justify-content-center my-4">
         <div class="text-center p-5 rounded" style="background-color: #e3f2fd">
             <h1 th:text="${post.title}" class="mb-4">...</h1>
-            <img th:src="${post.imgSrc}" class="rounded mx-auto d-block my-5" alt="..." width="400px">
-            <h4 th:text="${post.content}" class="mb-4">...</h4>
+            <img th:src="${post.image}" class="rounded mx-auto d-block my-5" alt="..." width="400px">
+            <h4 th:text="${post.description}" class="mb-4">...</h4>
             <a th:href="@{/}" data-mdb-ripple-init class="btn btn-primary" role="button">Go to Back</a>
         </div>
     </div>

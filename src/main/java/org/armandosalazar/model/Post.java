@@ -3,19 +3,16 @@ package org.armandosalazar.model;
 public class Post {
     private int id;
     private String title;
-    private String content;
-    private String imgSrc;
-    private String url;
-
+    private String description;
+    private String image;
     public Post() {
     }
 
-    public Post(int id, String title, String content, String imgSrc, String url) {
+    public Post(int id, String title, String description, String image) {
         this.id = id;
         this.title = title;
-        this.content = content;
-        this.imgSrc = imgSrc;
-        this.url = url;
+        this.description = description;
+        this.image = image;
     }
 
     public int getId() {
@@ -34,27 +31,19 @@ public class Post {
         this.title = title;
     }
 
-    public String getContent() {
-        return content;
+    public String getDescription() {
+        return description;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getImgSrc() {
-        return imgSrc;
+    public String getImage() {
+        return image;
     }
 
-    public void setImgSrc(String imgSrc) {
-        this.imgSrc = imgSrc;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
+    public void setImage(String image) {
+        this.image = image;
     }
 }

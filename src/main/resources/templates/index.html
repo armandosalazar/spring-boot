@@ -10,33 +10,15 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
-    <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/}">Spring Boot</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a
-                        class="nav-link active"
-                        aria-current="page"
-                        th:href="@{/}">Home</a>
-                <a class="nav-link" th:href="@{/gallery}">Gallery</a>
-                <a class="nav-link" th:href="@{/posts}">Post</a>
-            </div>
-        </div>
-    </div>
-</nav>
+<nav th:replace="~{fragments/nav :: nav}"></nav>
 <main class="container mt-4">
     <div class="row justify-content-center">
         <div th:each="post: ${posts}" class="col-3">
             <div class="card">
-                <img th:src="${post.imgSrc}" alt="..." class="card-img-top">
+                <img th:src="${post.image}" alt="..." class="card-img-top">
                 <div class="card-body">
                     <h5 th:text="${post.title}" class="card-title">...</h5>
-                    <p th:text="${post.content}" class="card-text">...</p>
+                    <p th:text="${post.description}" class="card-text">...</p>
                     <a th:href="${'/post?id='} + ${post.id}" class="btn btn-primary">Read More</a>
                 </div>
             </div>

@@ -20,7 +20,7 @@ public class Application implements CommandLineRunner {
 	@Qualifier("postComponent")
 	private PostComponent postComponent;
 	@Autowired
-	@Qualifier("postServiceImpl")
+	@Qualifier("postServiceDecoradorImpl")
 	public PostService postService;
 	private final Logger LOG = Logger.getLogger(Application.class.getName());
 

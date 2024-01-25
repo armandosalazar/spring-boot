@@ -8,15 +8,35 @@
     <script th:src="@{/js/bootstrap/bootstrap.js}"></script>
 </head>
 <body>
-<nav th:replace="~{fragments/nav :: nav}"></nav>
-<main class="container">
-    <h1>Form page</h1>
-    <form action="">
-        <div class="mb-3">
-            <label for="inputEmail" class="form-label">Email</label>
-            <input type="email" name="inputEmail" id="inputEmail" class="form-control">
-        </div>
-    </form>
+<nav th:replace="~{fragments/fragment :: nav}"></nav>
+<main class="d-flex flex-column align-items-center m-4">
+    <div class="w-50 rounded p-5" style="background-color: #e3f2fd;">
+        <h1>Form page</h1>
+        <form th:action="@{/form}" th:object="${post}" method="post">
+            <div class="mb-3">
+                <label for="id" class="form-label">Id</label>
+                <input th:field="*{id}" type="number" id="id" class="form-control" placeholder="0">
+                <div class="form-text"></div>
+            </div>
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input th:field="*{title}" type="text" id="title" class="form-control" placeholder="Title">
+                <div class="form-text"></div>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input th:field="*{description}" type="text" id="description" class="form-control" placeholder="Description">
+                <div class="form-text"></div>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <!-- th:field is like name attribute in HTML -->
+                <input th:field="*{image}" th:value="*{image}" type="text" id="image" class="form-control">
+                <div class="form-text"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
 </main>
 </body>
 </html>

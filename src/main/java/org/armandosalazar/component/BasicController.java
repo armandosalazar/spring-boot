@@ -5,11 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Controller
 public class BasicController {
@@ -52,8 +54,19 @@ public class BasicController {
     }
 
     @GetMapping(path = {"/form"})
-    public String form() {
-        return "form";
+    public ModelAndView form() {
+        Post post = new Post();
+        post.setImage("/img/post.png");
+        return new ModelAndView("form", "post", post);
+    }
+
+    @PostMapping(path = {"/form"})
+    public String form(Post post, Model model) {
+        Logger.getLogger(BasicController.class.getName()).info(post.toString());
+        List<Post> posts = this.getPosts();
+        posts.add(post);
+        model.addAttribute("posts", posts);
+        return "index";
     }
 
     public List<Post> getPosts() {
